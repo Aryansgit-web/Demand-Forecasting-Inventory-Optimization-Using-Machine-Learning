@@ -9,7 +9,6 @@ This project aims to develop a machine learning-based system for forecasting ret
 The initial data preparation phase has begun. The repository currently includes:
 
 - **Online Retail Dataset (`Online Retail.xlsx`):** The primary Excel dataset added for data preprocessing and analysis.
-- **Sample Dataset (`features.csv`):** A sample Walmart dataset included for preliminary exploration.
 - **CSV Conversion Script (`convert_to_csv.py`):** A Python utility using Pandas to convert Excel data into CSV format for easier processing.
 
 ## Upcoming Work
