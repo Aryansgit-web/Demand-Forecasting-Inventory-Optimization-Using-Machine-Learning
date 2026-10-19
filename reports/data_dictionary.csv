@@ -1,0 +1,119 @@
+
+import pandas as pd
+from pathlib import Path
+
+# --------------------------------------------------
+# 1. Define dataset locations
+# --------------------------------------------------
+
+DATASETS = {
+    "Online Retail": Path("data/raw/Online Retail.xlsx"),
+    "Walmart Features": Path("data/raw/features.csv")
+}
+
+# Output location
+output_dir = Path("reports")
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# --------------------------------------------------
+# 2. Define descriptions for known columns
+# Add descriptions only when the column exists.
+# --------------------------------------------------
+
+column_descriptions = {
+    "InvoiceNo": "Invoice or transaction identifier",
+    "StockCode": "Identifier assigned to a product",
+    "Description": "Product description",
+    "Quantity": "Quantity recorded in the transaction",
+    "InvoiceDate": "Date and time of the transaction",
+    "UnitPrice": "Recorded price per unit",
+    "CustomerID": "Customer identifier",
+    "Country": "Country associated with the transaction",
+    "Store": "Store identifier",
+    "Dept": "Department identifier",
+    "Date": "Date associated with the observation",
+    "Weekly_Sales": "Recorded weekly sales",
+    "Temperature": "Recorded temperature",
+    "Fuel_Price": "Recorded fuel price",
+    "CPI": "Consumer Price Index",
+    "Unemployment": "Recorded unemployment measure",
+    "IsHoliday": "Indicates whether the observation is associated with a holiday"
+}
+
+# --------------------------------------------------
+# 3. Load datasets and generate the data dictionary
+# --------------------------------------------------
+
+dictionary_records = []
+
+for dataset_name, file_path in DATASETS.items():
+
+    if not file_path.exists():
+        print(f"File not found: {file_path}")
+        print("Skipping this dataset.\n")
+        continue
+
+    # Load the dataset
+    if file_path.suffix.lower() in [".xlsx", ".xls"]:
+        df = pd.read_excel(file_path)
+    elif file_path.suffix.lower() == ".csv":
+        df = pd.read_csv(file_path)
+    else:
+        print(f"Unsupported file format: {file_path}")
+        continue
+
+    print(f"Loaded: {dataset_name}")
+    print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
+
+    # Generate one dictionary entry per column
+    for column in df.columns:
+
+        sample_values = (
+            df[column]
+            .dropna()
+            .astype(str)
+            .drop_duplicates()
+            .head(3)
+            .tolist()
+        )
+
+        dictionary_records.append({
+            "dataset": dataset_name,
+            "column_name": column,
+            "data_type": str(df[column].dtype),
+            "business_description": column_descriptions.get(
+                str(column), "To be documented after inspection"
+            ),
+            "missing_count": int(df[column].isna().sum()),
+            "missing_percentage": round(
+                df[column].isna().mean() * 100, 2
+            ),
+            "unique_values": int(df[column].nunique()),
+            "sample_values": " | ".join(sample_values),
+            "unit_of_measure": "To be verified",
+            "validation_notes": "To be reviewed",
+            "forecasting_relevance": "To be assessed"
+        })
+
+# --------------------------------------------------
+# 4. Save the data dictionary
+# --------------------------------------------------
+
+if dictionary_records:
+    data_dictionary = pd.DataFrame(dictionary_records)
+
+    output_file = output_dir / "data_dictionary.csv"
+
+    data_dictionary.to_csv(output_file, index=False)
+
+    print("\nData dictionary created successfully!")
+    print(f"Saved to: {output_file}")
+
+    print("\nPreview:")
+    print(data_dictionary.head(10).to_string(index=False))
+
+else:
+    print(
+        "\nNo datasets were loaded. "
+        "Check the file paths and filenames."
+    )
