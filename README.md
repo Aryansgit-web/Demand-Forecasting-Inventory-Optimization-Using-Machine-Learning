@@ -1,4 +1,4 @@
-# Demand-Forecasting-Inventory-Optimization-Using-Machine-Learning
+# Demand Forecasting and Inventory Optimization Using Machine Learning
 
 ## Project Overview
 
@@ -6,14 +6,24 @@ This project aims to develop a machine learning-based system for forecasting ret
 
 ## Work Completed
 
-The initial data preparation phase has begun. The repository currently includes:
+The initial data inspection and validation phase has started. The following work has been completed:
 
-- **Online Retail Dataset (`Online Retail.xlsx`):** The primary Excel dataset added for data preprocessing and analysis.
-- **CSV Conversion Script (`convert_to_csv.py`):** A Python utility using Pandas to convert Excel data into CSV format for easier processing.
+- **Online Retail Dataset (`Online Retail.xlsx`):** The original Excel dataset is available as the primary data source for the project.
+- **CSV Conversion Script (`convert_to_csv.py`):** A Python utility using Pandas is available for converting Excel data into CSV format.
+- **Data Loading and Inspection:** The dataset has been loaded into a Pandas DataFrame, and its columns, data types, and initial records have been inspected.
+- **Initial Data Quality Report:** Missing values, unique values, and exact duplicate rows have been examined.
+- **Data Validation Checks:** Initial checks have been performed to identify cancellation invoices, negative and zero quantities, non-positive prices, missing product descriptions, and missing customer IDs.
+- **Data Type Verification:** The transaction date and numerical fields have been checked to establish their data types.
+
+The original dataset contains 541,909 records and 8 columns. At this stage, the project is focused on understanding the data and identifying potential quality issues before applying cleaning rules.
 
 ## Upcoming Work
 
-- Data cleaning and exploratory data analysis (EDA).
+- Standardization and validation of data fields.
+- Handling missing values and duplicate records using documented rules.
+- Reviewing returns, cancellations, and invalid prices.
+- Preparing a cleaned dataset and data dictionary.
+- Exploratory data analysis (EDA) to identify demand trends and patterns.
 - Feature engineering and preparation of time-series data.
 - Development and evaluation of demand forecasting models.
 - Inventory optimization and replenishment recommendations.
@@ -27,9 +37,12 @@ The initial data preparation phase has begun. The repository currently includes:
 - Scikit-learn
 - Matplotlib
 - Seaborn
+- Google Colab for notebook-based development
 
 ## Project Status
 
-**Phase 1: Data Collection and Preparation — In Progress**
+**Phase 1: Data Collection and Initial Data Validation — In Progress**
 
-This repository will be updated as the project progresses through data analysis, model development, evaluation, and application development.
+The initial inspection has been completed through the data validation checks. Further cleaning and analysis are pending. Development is currently paused due to a Google Colab runtime connection issue.
+
+The repository will be updated as the project progresses through data cleaning, exploratory analysis, model development, evaluation, and application development.
