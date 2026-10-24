@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project aims to develop a machine learning-based system for forecasting retail demand and supporting inventory optimization. By analyzing historical retail sales data, the system will work toward predicting future demand and generating data-driven inventory recommendations to help reduce stockouts and overstocking.
+This project will develop a machine learning-based system for forecasting retail demand and supporting inventory optimization. By analyzing historical retail sales data, the system will work toward predicting future demand and generating data-driven inventory recommendations to help reduce stockouts and overstocking.
 
 ## Work Completed
 
