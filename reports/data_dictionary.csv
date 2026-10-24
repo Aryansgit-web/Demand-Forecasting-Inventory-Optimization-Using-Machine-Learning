@@ -1,0 +1,9 @@
+Column,Data Type,Missing Values,Unique Values
+InvoiceNo,object,0,25900
+StockCode,object,0,4070
+Description,object,1454,4223
+Quantity,int64,0,722
+InvoiceDate,datetime64[us],0,23260
+UnitPrice,float64,0,1630
+CustomerID,float64,135080,4372
+Country,str,0,38
