@@ -1,0 +1,57 @@
+feature,description,uses data up to,horizon
+lag_1,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+lag_2,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+lag_3,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+lag_4,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+lag_8,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+lag_12,Units sold k open weeks before the target week,origin (t-1) or earlier,1
+roll_mean_4,Mean weekly units over the 4 weeks ending at the origin,origin,1
+roll_std_4,Std of weekly units over the 4 weeks ending at the origin,origin,1
+roll_mean_8,Mean weekly units over the 8 weeks ending at the origin,origin,1
+roll_std_8,Std of weekly units over the 8 weeks ending at the origin,origin,1
+roll_mean_12,Mean weekly units over the 12 weeks ending at the origin,origin,1
+roll_std_12,Std of weekly units over the 12 weeks ending at the origin,origin,1
+roll_max_8,Max weekly units over 8 weeks ending at the origin,origin,1
+share_weeks_with_sales_8,Share of the last 8 weeks with any sales (intermittency),origin,1
+ewm_mean,Exponentially weighted mean of units (alpha 0.3),origin,1
+weeks_since_last_sale,Open weeks since the most recent week with sales,origin,1
+trend_4_vs_12,roll_mean_4 / roll_mean_12 (recent momentum),origin,1
+orders_lag_h,Number of invoices containing the product at the origin week,origin,1
+orders_roll_mean_4,Mean invoices per week over 4 weeks ending at the origin,origin,1
+price_last_known,Last observed average unit price (forward-filled),origin,1
+price_vs_8wk_mean,Last price / 8-week mean price (price-change proxy; no promo data),origin,1
+product_age_weeks,Open weeks since the product's first sale,calendar (known),1
+trading_days,Shop trading days in the target week,calendar (known),1
+week_of_year,ISO week number of the target week,calendar (known),1
+month,Month of the target week,calendar (known),1
+quarter,Quarter of the target week,calendar (known),1
+n_bank_holidays,England & Wales bank holidays in the target week,calendar (known),1
+weeks_to_christmas,Weeks from target week start to 25 Dec of the same year,calendar (known),1
+lag_4,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+lag_5,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+lag_6,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+lag_7,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+lag_11,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+lag_15,Units sold k open weeks before the target week,origin (t-4) or earlier,4
+roll_mean_4,Mean weekly units over the 4 weeks ending at the origin,origin,4
+roll_std_4,Std of weekly units over the 4 weeks ending at the origin,origin,4
+roll_mean_8,Mean weekly units over the 8 weeks ending at the origin,origin,4
+roll_std_8,Std of weekly units over the 8 weeks ending at the origin,origin,4
+roll_mean_12,Mean weekly units over the 12 weeks ending at the origin,origin,4
+roll_std_12,Std of weekly units over the 12 weeks ending at the origin,origin,4
+roll_max_8,Max weekly units over 8 weeks ending at the origin,origin,4
+share_weeks_with_sales_8,Share of the last 8 weeks with any sales (intermittency),origin,4
+ewm_mean,Exponentially weighted mean of units (alpha 0.3),origin,4
+weeks_since_last_sale,Open weeks since the most recent week with sales,origin,4
+trend_4_vs_12,roll_mean_4 / roll_mean_12 (recent momentum),origin,4
+orders_lag_h,Number of invoices containing the product at the origin week,origin,4
+orders_roll_mean_4,Mean invoices per week over 4 weeks ending at the origin,origin,4
+price_last_known,Last observed average unit price (forward-filled),origin,4
+price_vs_8wk_mean,Last price / 8-week mean price (price-change proxy; no promo data),origin,4
+product_age_weeks,Open weeks since the product's first sale,calendar (known),4
+trading_days,Shop trading days in the target week,calendar (known),4
+week_of_year,ISO week number of the target week,calendar (known),4
+month,Month of the target week,calendar (known),4
+quarter,Quarter of the target week,calendar (known),4
+n_bank_holidays,England & Wales bank holidays in the target week,calendar (known),4
+weeks_to_christmas,Weeks from target week start to 25 Dec of the same year,calendar (known),4

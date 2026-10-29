@@ -1,0 +1,5 @@
+split,start_week,end_week,open_weeks,notes
+train,2010-12-06,2011-08-08,35,Fit models and baselines. Includes Dec-2010 peak and the Christmas closure gap.
+validation,2011-08-15,2011-10-03,8,Tune hyper-parameters and choose models. Start of the autumn ramp-up.
+test,2011-10-10,2011-11-28,8,"Final evaluation only, never used for tuning. Peak pre-Christmas season."
+excluded,,,3,"Removed: 2010-11-29, 2010-12-27, 2011-12-05 (closed or partial weeks)"
