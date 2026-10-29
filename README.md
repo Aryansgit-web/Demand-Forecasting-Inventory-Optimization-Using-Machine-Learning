@@ -113,31 +113,62 @@ Planned tasks include:
 
 ## Project Structure
 
-```text
+```text 
 Demand-Forecasting-Inventory-Optimization-Using-Machine-Learning/
 │
 ├── data/
+│   ├── raw/
+│   │   ├── .gitkeep
+│   │   └── Online Retail.xlsx              # original dataset
 │   ├── interim/
-│   │   └── cleaned_sales.csv
-│   ├── processed/
-│   └── raw/
-│       └── Online Retail.xlsx
+│   │   ├── .gitkeep
+│   │   └── cleaned_sales.csv               # Week 1: cleaned transactions
+│   └── processed/
+│       ├── .gitkeep
+│       ├── weekly_product_demand.csv       # Week 1: product × week table
+│       ├── features_h1.csv                 # Week 2: features, 1 week ahead
+│       ├── features_h4.csv                 # Week 2: features, 4 weeks ahead
+│       └── baseline_forecasts.csv          # Week 2: baseline forecasts
 │
 ├── notebooks/
-│   └── 01_week1_data_quality_eda.ipynb
+│   ├── 01_week1_data_quality_eda.ipynb
+│   └── 02_week2_features_baselines.ipynb
 │
 ├── reports/
-│   ├── data_dictionary.csv
-│   ├── data_quality_report.csv
-|
-├── src/
-│   └── convert_to_csv.py
+│   ├── figures/
+│   │   ├── 01_monthly_quantity.png
+│   │   ├── 02_top10_products.png
+│   │   ├── 03_daily_quantity.png
+│   │   ├── 04_weekday_quantity.png
+│   │   ├── 05_weekly_total.png
+│   │   ├── 06_sales_frequency_hist.png
+│   │   ├── 21_split_plan.png
+│   │   ├── 22_wape_by_product_hist.png
+│   │   ├── 23_total_actual_vs_baselines.png
+│   │   └── 24_example_products.png
+│   ├── data_dictionary.csv                 # Week 1
+│   ├── data_quality_report.csv             # Week 1
+│   ├── cleaning_log.csv                    # Week 1
+│   ├── demand_profile.csv                  # Week 1
+│   ├── product_selection.csv               # Week 2
+│   ├── split_plan.csv                      # Week 2
+│   ├── feature_dictionary.csv              # Week 2
+│   ├── baseline_evaluation.csv             # Week 2: per product-week
+│   ├── baseline_evaluation_total.csv       # Week 2: total demand
+│   └── baseline_error_by_product.csv       # Week 2
 │
+├── src/
+│   ├── __pycache__/                        # auto-generated, ignored by Git
+│   ├── __init__.py
+│   ├── data_cleaning.py                    # Week 1: cleaning and weekly table
+│   ├── splits.py                           # Week 2: split dates, horizons, product scope
+│   ├── features.py                         # Week 2: features and leakage check
+│   ├── baselines.py                        # Week 2: baseline forecasts
+│   └── evaluation.py                       # Week 2: metrics
+│
+├── .gitignore
 ├── README.md
 └── requirements.txt
-```
-
-This structure describes the intended organization. Folder and file names should be updated to match the actual repository contents.
 
 ## Evaluation Metrics
 
