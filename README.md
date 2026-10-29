@@ -170,35 +170,7 @@ Demand-Forecasting-Inventory-Optimization-Using-Machine-Learning/
 ├── README.md
 └── requirements.txt
 
-## Evaluation Metrics
 
-Forecasting models will be evaluated using:
-
-- **Mean Absolute Error (MAE):** Measures the average absolute difference between actual and predicted demand.
-- **Root Mean Squared Error (RMSE):** Penalizes larger forecasting errors more heavily.
-- **Percentage-based metric:** Used when suitable for the demand data, with care for zero or very low actual demand.
-
-## Expected Outcome
-
-The expected outcome is a reproducible demand forecasting workflow that compares forecasting models, evaluates their accuracy, and demonstrates how demand estimates can support inventory planning. An interactive dashboard will make the results easier to understand and use.
-
-## Current Status
-
-Week 1 focuses on data quality assessment, cleaning, and exploratory analysis. Forecasting models, inventory optimization, and dashboard development are planned for the subsequent weeks.
-
-## How to Run
-
-1. Clone or download the repository.
-2. Install the required Python libraries.
-3. Place the original dataset in the configured raw-data directory.
-4. Open the Week 1 notebook in Jupyter Notebook or VS Code.
-5. Run the notebook cells in order.
-
-Install dependencies using:
-
-```bash
-pip install -r requirements.txt
-```
 
 Ensure that the dataset path in the notebook matches your local folder structure.
 
