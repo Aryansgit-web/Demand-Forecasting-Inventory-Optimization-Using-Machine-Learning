@@ -1,9 +1,9 @@
-Column,Data Type,Missing Values,Unique Values
-InvoiceNo,object,0,25900
-StockCode,object,0,4070
-Description,object,1454,4223
-Quantity,int64,0,722
-InvoiceDate,datetime64[us],0,23260
-UnitPrice,float64,0,1630
-CustomerID,float64,135080,4372
-Country,str,0,38
+Column,Data Type,Missing Values,Unique Values,Meaning,Source
+InvoiceNo,str,0,25900,Invoice number (6 digits). Starts with 'C' = cancellation.,UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+StockCode,str,0,3958,"Product code. Real products start with 5 digits (e.g. 85123A); others are postage, fees or adjustments.",UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+Description,string,1454,4211,"Product name. Can vary slightly for the same StockCode, so StockCode is the product key.",UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+Quantity,int64,0,722,"Units per invoice line. Negative = cancellation, return or stock adjustment.",UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+InvoiceDate,datetime64[us],0,23260,Date and time the invoice was created.,UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+UnitPrice,float64,0,1630,Price per unit in GBP (£). Zero or negative = free items / bad-debt adjustments.,UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+CustomerID,float64,135080,4372,5-digit customer identifier. Missing for ~25% of lines (guest/unregistered).,UCI Online Retail dataset (data/raw/Online Retail.xlsx)
+Country,str,0,38,Country where the customer resides.,UCI Online Retail dataset (data/raw/Online Retail.xlsx)

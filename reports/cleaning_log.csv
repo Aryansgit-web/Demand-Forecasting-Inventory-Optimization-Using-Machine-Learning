@@ -1,0 +1,6 @@
+Step,Rows before,Rows removed,Rows after,Rule
+Invalid dates,541909,0,541909,InvoiceDate could not be parsed
+Exact duplicates,541909,5268,536641,All 8 columns identical
+Non-product codes,536641,2989,533652,"POST, DOT, M, D, C2, S, BANK CHARGES, AMAZONFEE, CRUK, PADS, B, gift vouchers, DCGS*"
+Fully cancelled orders,533652,5610,528042,"Order + matching cancellation removed (same customer, product, quantity)"
+Non-positive qty / price,528042,8343,519699,"Remaining cancellations, returns, adjustments and zero-price rows"

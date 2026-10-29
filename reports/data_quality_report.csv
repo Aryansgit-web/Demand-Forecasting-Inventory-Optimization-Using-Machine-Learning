@@ -1,5 +1,5 @@
 Metric,Value,Percentage (%)
-Total Rows,541909,100.0
+Total Rows,541909,
 Total Columns,8,
 Duplicate Rows,5268,0.97
 Missing Product Descriptions,1454,0.27
@@ -7,4 +7,5 @@ Missing Customer IDs,135080,24.93
 Negative Quantities,10624,1.96
 Zero Quantities,0,0.0
 Non-Positive Unit Prices,2517,0.46
-Cancellation Invoices,9288,1.71
+Cancellation Invoices (lines),9288,1.71
+Non-Product Stock Codes (lines),2995,0.55
