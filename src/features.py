@@ -119,6 +119,25 @@ def make_features(panel: pd.DataFrame, horizon: int = 1) -> pd.DataFrame:
     return out
 
 
+def extend_with_future_weeks(panel: pd.DataFrame, n_weeks: int) -> pd.DataFrame:
+    """
+    Append `n_weeks` empty future weeks per product (split = "future") so that
+    make_features() can build forecast rows beyond the last observed week.
+    Demand columns stay NaN; features only use the observed past.
+    trading_days assumes the usual 6-day week minus weekday bank holidays.
+    """
+    last = panel["week_start"].max()
+    future = pd.date_range(last + pd.Timedelta(weeks=1), periods=n_weeks, freq="7D")
+    prods = panel.drop_duplicates("StockCode")[["StockCode", "Description"]]
+    rows = prods.merge(pd.DataFrame({"week_start": future}), how="cross")
+    hol_weekday = UK_BANK_HOLIDAYS[UK_BANK_HOLIDAYS.dayofweek < 5]
+    rows["trading_days"] = [6 - int(((hol_weekday >= w) & (hol_weekday < w + pd.Timedelta(days=7))).sum())
+                            for w in rows["week_start"]]
+    rows["split"] = "future"
+    out = pd.concat([panel, rows], ignore_index=True)
+    return out.sort_values(["StockCode", "week_start"]).reset_index(drop=True)
+
+
 def load_features(path) -> pd.DataFrame:
     """Read features_h*.csv with StockCode kept as text and dates parsed."""
     return pd.read_csv(path, dtype={"StockCode": str, "Description": str},

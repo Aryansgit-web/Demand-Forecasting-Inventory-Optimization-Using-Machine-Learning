@@ -1,0 +1,14 @@
+{
+  "model": "random_forest",
+  "horizon": 4,
+  "target_mode": "raw",
+  "params": {
+    "n_estimators": 200,
+    "max_features": 0.5,
+    "max_depth": 16,
+    "min_samples_leaf": 50
+  },
+  "trained_on": "all observed weeks",
+  "last_observed_week": "2011-11-28",
+  "validation_WAPE_%": 67.4
+}

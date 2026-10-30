@@ -1,0 +1,18 @@
+{
+  "model": "xgboost",
+  "horizon": 3,
+  "target_mode": "raw",
+  "params": {
+    "learning_rate": 0.05,
+    "n_estimators": 400,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 10,
+    "max_depth": 3,
+    "objective": "reg:tweedie",
+    "tweedie_variance_power": 1.5
+  },
+  "trained_on": "all observed weeks",
+  "last_observed_week": "2011-11-28",
+  "validation_WAPE_%": 65.37
+}

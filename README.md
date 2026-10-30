@@ -88,17 +88,49 @@ Demand features use only data up to the forecast origin (t − h). `check_no_lea
 
 **Missing data and stockouts:** zeros in open weeks are treated as true zeros. Stockouts cannot be identified because the data has no inventory fields. Promotions are not available.
 
-### Week 3: Model Development and Inventory Optimization
+## Week 3: models, evaluation and replenishment
 
-Planned tasks include:
+Run `notebooks/03_week3_models_replenishment.ipynb` after notebooks 01 and 02. It takes about 5–10 minutes.
 
-- Training and comparing suitable forecasting models.
-- Evaluating performance using MAE, RMSE, and an appropriate percentage-based metric.
-- Comparing model performance against baseline forecasts.
-- Estimating safety stock and reorder points using demand variability and lead-time assumptions.
-- Documenting inventory-data limitations and assumptions.
+**Models** (`src/models.py`): one direct model per horizon (h = 1–4).
+- **XGBoost:** squared-error, log-target and Tweedie loss variants.
+- **Random Forest:** raw, ratio-to-recent-mean and log-target variants.
+- **SES:** simple exponential smoothing per product.
+- **Ensemble:** an equal-weight average of the best of each.
 
-The dataset does not directly provide all operational inventory details, such as current stock levels and supplier lead times. Any inventory recommendations will therefore require clearly documented assumptions or additional data.
+**Tuning and selection**
+- Candidates are tuned on the **validation** period with models trained on train only (log: `reports/model_tuning.csv`).
+- **Selection rule:** lowest mean validation WAPE with |bias| ≤ 10%. Log-target and L1 models are rejected because they under-forecast by 30–40%.
+- **Selected method:** the **ensemble**.
+- The selected models are refitted on train + validation and scored once on the **test** period.
+
+**Test results** (`reports/model_comparison.csv`, 978 products, 8 weeks)
+
+| | Ensemble WAPE / Bias | 4-week moving average WAPE / Bias |
+|---|---|---|
+| h = 1 | 60.6% / +2.3% | 61.8% / −2.1% |
+| h = 4 | 65.2% / +1.3% | 65.8% / −9.1% |
+| Total demand, h = 1 | 9.4% | 10.5% |
+| Total demand, h = 4 | 8.0% | 9.9% |
+
+**Forecast outputs**
+- `data/processed/forecasts_backtest.csv`: validation and test forecasts for all methods and baselines.
+- `data/processed/forecasts_future.csv`: forecasts for 5–26 Dec 2011 from the production models in `models/`.
+
+**Replenishment** (`src/replenishment.py`, assumptions in `src/config.py` and `reports/assumptions.md`): a periodic-review, order-up-to policy.
+
+| Quantity | How it's calculated |
+|---|---|
+| Safety stock | z × RMSE of out-of-sample cumulative forecast errors |
+| Reorder point | lead-time demand + z × σ |
+| Suggested order | order-up-to level − inventory position |
+
+- **Default assumptions:** lead time 2 weeks, weekly review, 95% service level.
+- **Current stock** is an input. It is not in the data and is never estimated.
+- **Backtest on test:** the safety stock covered 90.8% of lead-time demand cycles against the 95% target (`reports/service_level_backtest.csv`).
+
+**Error analysis:** `reports/error_by_product.csv`, `error_by_week.csv` and `error_by_demand_class.csv`, plus the figures `reports/figures/31–36`.
+
 
 ### Week 4: Dashboard and Final Documentation
 
