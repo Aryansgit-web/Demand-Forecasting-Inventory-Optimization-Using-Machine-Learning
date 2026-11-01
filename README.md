@@ -2,8 +2,6 @@
 
 A predictive-analytics workflow that forecasts weekly product demand from historical retail transactions, evaluates the forecasts against simple baselines, and turns them into inventory replenishment recommendations. The results are served through an interactive dashboard and a REST API.
 
-> Forecasts are model estimates, not ground truth. Inventory outputs depend on documented assumptions (lead time, service level, current stock) that are **not** contained in the dataset. See [Assumptions and limitations](#assumptions-and-limitations).
-
 ---
 
 ## Contents
@@ -323,3 +321,5 @@ All inventory parameters are assumptions set in `src/config.py`. The full list i
 ## Tech stack
 
 Python 3.11, pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Plotly, Streamlit, FastAPI, Uvicorn, pytest, Jupyter, Git/GitHub. Versions are in `requirements.txt`.
+
+> Forecasts are model estimates, not ground truth. Inventory outputs depend on documented assumptions (lead time, service level, current stock) that are **not** contained in the dataset. See [Assumptions and limitations](#assumptions-and-limitations).
